@@ -38,7 +38,7 @@ endef
 define KernelPackage/tutuicmptunnel
   SUBMENU:=Network Support
   TITLE:=tutuicmptunnel kernel module
-  DEPENDS:=+kmod-nf-core
+  DEPENDS:=
   FILES:=$(PKG_BUILD_DIR)/kmod/tutuicmptunnel.ko
   AUTOLOAD:=$(call AutoLoad,99,tutuicmptunnel)
 endef
