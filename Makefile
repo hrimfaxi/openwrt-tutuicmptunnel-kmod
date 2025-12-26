@@ -37,8 +37,8 @@ endef
 
 define KernelPackage/tutuicmptunnel
   SUBMENU:=Network Support
-  TITLE:=Tutu ICMP Tunnel kernel module
-  DEPENDS:=+kmod-ipt-conntrack +kmod-ipt-core
+  TITLE:=tutuicmptunnel kernel module
+  DEPENDS:=+kmod-nf-core
   FILES:=$(PKG_BUILD_DIR)/kmod/tutuicmptunnel.ko
   AUTOLOAD:=$(call AutoLoad,99,tutuicmptunnel)
 endef
@@ -46,7 +46,7 @@ endef
 define Package/tutuicmptunnel
   SECTION:=net
   CATEGORY:=Network
-  TITLE:=Tutu ICMP Tunnel user tool
+  TITLE:=tutuicmptunnel user tools(ktuctl tuctl_server tuctl_client)
   DEPENDS:=+kmod-tutuicmptunnel +libmnl
 endef
 
