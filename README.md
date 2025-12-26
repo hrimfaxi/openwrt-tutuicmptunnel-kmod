@@ -5,7 +5,7 @@
 下载`openwrt-sdk`或者`openwrt`仓库，解压后进入子目录
 
 ```sh
-cd packages
+cd package
 git clone https://github.com/hrimfaxi/openwrt-tutuicmptunnel-kmod tutuicmptunnel
 cd ..
 ./scripts/feeds update -a
