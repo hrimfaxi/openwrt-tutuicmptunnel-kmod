@@ -16,6 +16,7 @@ define Build/Configure
 	cd $(PKG_BUILD_DIR) && \
 	cmake . \
 		-DCMAKE_BUILD_TYPE=Release \
+		-DUSE_TUCRYPTO=1 \
 		-DCMAKE_SYSTEM_NAME=Linux \
 		-DCMAKE_C_COMPILER="$(TARGET_CC)"
 endef
