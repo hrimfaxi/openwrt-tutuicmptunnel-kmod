@@ -18,6 +18,7 @@ define Build/Configure
 		-DCMAKE_BUILD_TYPE=Release \
 		-DUSE_TUCRYPTO=1 \
 		-DCMAKE_SYSTEM_NAME=Linux \
+		-DUSE_TUCRYPTO=1 \
 		-DCMAKE_C_COMPILER="$(TARGET_CC)"
 endef
 
@@ -37,24 +38,27 @@ define Build/Clean
 endef
 
 define KernelPackage/tutuicmptunnel
-  SUBMENU:=Network Support
-  TITLE:=tutuicmptunnel kernel module
-  DEPENDS:=
-  FILES:=$(PKG_BUILD_DIR)/kmod/tutuicmptunnel.ko
-  AUTOLOAD:=$(call AutoLoad,99,tutuicmptunnel)
+	SUBMENU:=Network Support
+	TITLE:=tutuicmptunnel kernel module
+	DEPENDS:=
+	FILES:=$(PKG_BUILD_DIR)/kmod/tutuicmptunnel.ko
+	AUTOLOAD:=$(call AutoLoad,99,tutuicmptunnel)
 endef
 
 define Package/tutuicmptunnel
-  SECTION:=net
-  CATEGORY:=Network
-  TITLE:=tutuicmptunnel user tools(ktuctl tuctl_server tuctl_client)
-  DEPENDS:=+kmod-tutuicmptunnel +libmnl
+	SECTION:=net
+	CATEGORY:=Network
+	TITLE:=tutuicmptunnel user tools(ktuctl tuctl_server tuctl_client)
+	DEPENDS:=+kmod-tutuicmptunnel +libmnl
 endef
 
 define Package/tutuicmptunnel/install
 	$(INSTALL_DIR) $(1)/usr/sbin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ktuctl/ktuctl \
-		$(1)/usr/sbin/
+	$(INSTALL_DIR) $(1)/usr/bin
+
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ktuctl/ktuctl $(1)/usr/sbin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/tuserver/tuctl_server $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/tuserver/tuctl_client $(1)/usr/bin/
 endef
 
 $(eval $(call KernelPackage,tutuicmptunnel))
