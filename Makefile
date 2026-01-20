@@ -18,7 +18,6 @@ define Build/Configure
 		-DCMAKE_BUILD_TYPE=Release \
 		-DUSE_TUCRYPTO=1 \
 		-DCMAKE_SYSTEM_NAME=Linux \
-		-DUSE_TUCRYPTO=1 \
 		-DCMAKE_C_COMPILER="$(TARGET_CC)"
 endef
 
