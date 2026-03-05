@@ -13,5 +13,6 @@ cd ..
 make menuconfig # 进入menuconfig选中tutuicmptunnel
 make package/tutuicmptunnel/compile V=s
 
-find . -name "*tutu*.ipk" # 找到ipk上传路由器
+# 查找 tutuicmptunnel-kmod 的安装包，然后上传到路由器
+find . -type f \( -name "*tutu*.ipk" -o -name "*tutu*.apk" \)
 ```
